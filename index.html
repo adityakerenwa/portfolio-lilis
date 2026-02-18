@@ -1,0 +1,1231 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Lilis Manullang </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --gradient-secondary: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #43e97b 100%);
+            --gradient-accent: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --gradient-dark: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            --gradient-light: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+            --gradient-body: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #667eea 100%);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.4);
+            --shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.5);
+            --bg-primary: #0f0f23;
+            --bg-secondary: #1a1a2e;
+            --bg-card: rgba(26, 26, 46, 0.9);
+            --text-primary: #ffffff;
+            --text-secondary: #b8c5d6;
+            --text-accent: #667eea;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #2d1b69 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-soft);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            padding: 5px 0;
+            background: rgba(15, 15, 35, 0.98);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .nav-menu a:hover {
+            color: #764ba2;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .profile-section {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .profile-main-img {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 10px solid white;
+            box-shadow: var(--shadow-strong);
+            display: block;
+            margin: 0 auto;
+            transition: all 0.5s ease;
+        }
+
+        .profile-main-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .profile-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .gallery-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .gallery-img:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+        }
+
+        .gallery-img.active {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .greeting {
+            font-size: 1.2rem;
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .highlight {
+            background: var(--gradient-secondary);
+            padding: 3px 10px;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: white;
+            color: #667eea;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .social-icon i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-icon:hover::before {
+            opacity: 1;
+        }
+
+        .social-icon:hover {
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+            background: var(--gradient-secondary);
+        }
+
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 5px;
+            background: var(--gradient-accent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .info-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-list i {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 25px;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-item {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+            color: white;
+        }
+
+        .skill-item:hover::before {
+            opacity: 1;
+        }
+
+        .skill-item:hover .skill-icon,
+        .skill-item:hover .skill-title,
+        .skill-item:hover p {
+            color: white;
+        }
+
+        .skill-icon {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.4s ease;
+        }
+
+        .skill-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            transition: all 0.4s ease;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            background: rgb(86, 74, 195);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+        }
+
+        .contact-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        }
+
+        .instagram-btn {
+            background: linear-gradient(135deg, #E4405F 0%, #C13584 100%);
+        }
+
+        .info-note {
+            background: var(--gradient-light);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+
+
+        /* Footer */
+        footer {
+            background: var(--gradient-dark);
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-icon:hover {
+            background: var(--gradient-accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-section {
+                order: 2;
+            }
+            
+            .profile-info {
+                order: 1;
+            }
+            
+            .description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--bg-card);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+                text-align: center;
+                transition: 0.4s;
+                box-shadow: var(--shadow-medium);
+                padding: 30px 0;
+                z-index: 999;
+                border-radius: 0 0 20px 20px;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .nav-menu a {
+                font-size: 1.1rem;
+            }
+
+            .hero {
+                padding: 120px 0 60px;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .profile-main-img {
+                width: 280px;
+                height: 280px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                padding: 30px 20px;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .profile-main-img {
+                width: 240px;
+                height: 240px;
+            }
+            
+            .gallery-img {
+                width: 65px;
+                height: 65px;
+            }
+            
+            .name {
+                font-size: 2.2rem;
+            }
+            
+            .title {
+                font-size: 1.3rem;
+            }
+            
+            .contact-btn {
+                padding: 14px 25px;
+                font-size: 1rem;
+            }
+            
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-buttons .contact-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="nav-container">
+                <div class="logo">Portfolio</div>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#skills">Keahlian</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-section fade-in">
+                    <img src="1.jpeg" alt="Foto Profil Utama" class="profile-main-img" id="main-profile-pic">
+                    
+                    <div class="profile-gallery">
+                        <img src="2.jpeg" alt="Foto 1" class="gallery-img active" data-img="2.jpeg">
+                        <img src="3.jpeg" alt="Foto 2" class="gallery-img active" data-img="3.jpeg">
+                    </div>
+                </div>
+                
+                <div class="profile-info fade-in">
+                    <p class="greeting">Halo, perkenalkan saya</p>
+                    <h1 class="name">Nama Anda</h1>
+                    <h2 class="title"><span class="highlight">Guru</span> & <span class="highlight">Designer | Tailor</span></h2>
+                    <p class="description">Saya seorang guru dan penjahit yang kreatif. Saya senang menciptakan pengalaman belajar yang menarik dan desain yang memukau.</p>
+                    
+                    <div class="social-links">
+                        <a href="https://wa.me/6281375004165" target="_blank" class="social-icon" title="WhatsApp" id="whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="instagram://user?username=m_lilisdiana" target="_blank" class="social-icon" title="Instagram" id="instagram-btn">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    
+                    <button class="contact-btn pulse" id="contact-me-btn">
+                        <i class="fas fa-paper-plane"></i> Hubungi Saya
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">Tentang Saya</h2>
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <p>Saya adalah guru yang berdedikasi dalam membimbing dan mengembangkan potensi peserta didik.</p>
+                    <p>Selain berprofesi sebagai guru, saya memiliki keterampilan menjahit yang saya lakukan di waktu luang. Kegiatan ini menjadi sarana untuk menyalurkan kreativitas serta meningkatkan ketelitian dan kesabaran dalam bekerja.</p>
+                    <ul class="info-list">
+                        <li>
+                            <i class="fas fa-birthday-cake"></i>
+                            <span><strong>Tanggal Lahir:</strong> 10 Mei 1998</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>Lokasi:</strong> Medan, Indonesia</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-heart"></i>
+                            <span><strong>Minat:</strong> Public Speaking, Designer.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title fade-in">Keahlian</h2>
+            <div class="skills-container">
+                <div class="skill-item fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="skill-title">Pendidikan</h3>
+                    <p>Pengembangan Kurikulum, Metode Pembelajaran Inovatif, Evaluasi Pembelajaran, Pengembangan Siswa</p>
+                </div>
+
+                <div class="skill-item fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3 class="skill-title">Penjahitan</h3>
+                    <p>Teknik Jahit Modern, Pola Busana, Material Fashion, Custom Clothing, Tailoring</p>
+                </div>
+                <div class="skill-item fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="skill-title">Komunikasi & Networking</h3>
+                    <p>Public Speaking, Social Media Management, Community Building, Event Planning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Hubungi Saya</h2>
+            <div class="contact-container fade-in">
+                <p class="contact-text">Jika Anda tertarik untuk bekerja sama, memiliki pertanyaan, jangan ragu untuk menghubungi saya melalui media sosial atau WhatsApp. Saya akan membalas pesan Anda secepat mungkin!</p>
+                
+                <div class="contact-buttons">
+                    <a href="https://wa.me/6281375004165" target="_blank" class="contact-btn whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="instagram://user?username=m_lilisdiana" target="_blank" class="contact-btn instagram-btn">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Portfolio</div>
+                <div class="footer-social">
+                    <a href="https://wa.me/6281375004165" target="_blank" class="footer-icon" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="instagram://user?username=m_lilisdiana" target="_blank" class="footer-icon" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <p class="copyright">© <span id="current-year">2026</span> Portfolio. Dibuat dengan <i class="fas fa-heart" style="color:#ff6b6b;"></i> oleh Lilis Manullang</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ==================== JavaScript Tingkat Dewa ====================
+        
+        // 1. Inisialisasi variabel
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        const header = document.getElementById('header');
+        const mainProfilePic = document.getElementById('main-profile-pic');
+        const galleryImages = document.querySelectorAll('.gallery-img');
+        const contactMeBtn = document.getElementById('contact-me-btn');
+        const currentYearSpan = document.getElementById('current-year');
+        
+        // 2. Data pribadi yang dapat disesuaikan
+        const personalData = {
+            name: "Lilis Manullang",
+            birthDate: "10 Mei 1988",
+            phone: "+62 813-7500-4165",
+            whatsapp: "6281375004165", // tanpa tanda +
+            instagram: "m_lilisdiana",
+            location: "Medan, Indonesia",
+        };
+        
+        // 3. Fungsi untuk mengupdate tahun secara dinamis
+        function updateCurrentYear() {
+            const currentYear = new Date().getFullYear();
+            currentYearSpan.textContent = currentYear;
+        }
+        
+        // 4. Mobile menu toggle dengan animasi
+        function toggleMobileMenu() {
+            mobileMenu.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                mobileMenu.innerHTML = navMenu.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Tutup menu saat klik di luar
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !navMenu.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        }
+        
+        // 5. Header scroll effect
+        function headerScrollEffect() {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+        }
+        
+        // 6. Smooth scrolling untuk anchor links
+        function smoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Tutup mobile menu jika terbuka
+                        navMenu.classList.remove('active');
+                        mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // 7. Gallery image functionality
+        function initGallery() {
+            galleryImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    // Hapus kelas active dari semua gambar
+                    galleryImages.forEach(i => i.classList.remove('active'));
+                    
+                    // Tambah kelas active ke gambar yang diklik
+                    this.classList.add('active');
+                    
+                    // Update gambar utama dengan efek transisi
+                    const newSrc = this.getAttribute('data-img');
+                    
+                    // Efek fade out/in
+                    mainProfilePic.style.opacity = '0.5';
+                    mainProfilePic.style.transform = 'scale(0.95)';
+                    
+                    setTimeout(() => {
+                        mainProfilePic.src = newSrc;
+                        mainProfilePic.style.opacity = '1';
+                        mainProfilePic.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+        }
+        
+        // 8. Scroll animation dengan Intersection Observer
+        function initScrollAnimation() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Hapus observer setelah animasi terpicu
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            fadeElements.forEach(el => observer.observe(el));
+        }
+        
+        // 9. Contact button functionality
+        function initContactButtons() {
+            // Tombol "Hubungi Saya"
+            contactMeBtn.addEventListener('click', () => {
+                // Scroll ke section kontak
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                
+                // Efek visual pada tombol
+                contactMeBtn.classList.remove('pulse');
+                contactMeBtn.innerHTML = '<i class="fas fa-check"></i> Menuju Kontak';
+                contactMeBtn.style.background = 'var(--gradient-accent)';
+                
+                setTimeout(() => {
+                    contactMeBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Hubungi Saya';
+                    contactMeBtn.classList.add('pulse');
+                    contactMeBtn.style.background = '';
+                }, 2000);
+            });
+            
+            // WhatsApp button dengan konfirmasi
+            document.getElementById('whatsapp-btn').addEventListener('click', (e) => {
+                if (!confirm(`Anda akan diarahkan ke WhatsApp untuk menghubungi ${personalData.name}. Lanjutkan?`)) {
+                    e.preventDefault();
+                }
+            });
+
+            // Instagram button dengan konfirmasi
+            document.getElementById('instagram-btn').addEventListener('click', (e) => {
+                if (!confirm(`Anda akan diarahkan ke Instagram ${personalData.name}. Lanjutkan?`)) {
+                    e.preventDefault();
+                }
+            });
+        }
+        
+        // 10. Update data pribadi di halaman
+        function updatePersonalData() {
+            // Update nama di beberapa tempat
+            document.querySelector('.name').textContent = personalData.name;
+            document.querySelector('.copyright').innerHTML = `© <span id="current-year">2026</span> Portfolio. Dibuat dengan <i class="fas fa-heart" style="color:#ff6b6b;"></i> oleh ${personalData.name}`;
+
+            // Update info kontak
+            document.querySelectorAll('.info-list li:nth-child(1) span').forEach(el => {
+                el.innerHTML = `<strong>Tanggal Lahir:</strong> ${personalData.birthDate}`;
+            });
+
+            document.querySelectorAll('.info-list li:nth-child(2) span').forEach(el => {
+                el.innerHTML = `<strong>Lokasi:</strong> ${personalData.location}`;
+            });
+
+
+
+            // Update link Instagram
+            const instagramLinks = document.querySelectorAll('a[href*="instagram.com"]');
+            instagramLinks.forEach(link => {
+                link.href = `instagram://user?username=${personalData.instagram}`;
+            });
+        }
+        
+        // 11. Parallax effect untuk hero background
+        function initParallax() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroBg = document.querySelector('.hero-bg');
+                
+                if (heroBg) {
+                    heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+        }
+        
+        // 12. Enhanced particle effect untuk background
+        function initParticleEffect() {
+            const canvas = document.createElement('canvas');
+            canvas.id = 'particle-canvas';
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '-2';
+            document.body.appendChild(canvas);
+
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            function createParticle() {
+                return {
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2 + 1,
+                    opacity: Math.random() * 0.5 + 0.2
+                };
+            }
+
+            function initParticles() {
+                particles = [];
+                const particleCount = Math.min(50, Math.floor((canvas.width * canvas.height) / 15000));
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(createParticle());
+                }
+            }
+
+            function updateParticles() {
+                particles.forEach(particle => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+
+                    if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+                });
+            }
+
+            function drawParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(particle => {
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(102, 126, 234, ${particle.opacity})`;
+                    ctx.fill();
+                });
+            }
+
+            function animate() {
+                updateParticles();
+                drawParticles();
+                requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                initParticles();
+            });
+
+            resizeCanvas();
+            initParticles();
+            animate();
+        }
+        
+        // 13. Inisialisasi semua fungsi saat DOM siap
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('%c✨ Portfolio dengan JavaScript Tingkat Dewa ✨', 'color: #667eea; font-size: 18px; font-weight: bold;');
+            console.log('%cHalo! Portfolio ini dilengkapi dengan berbagai fitur interaktif.', 'color: #764ba2; font-size: 14px;');
+            
+            // Jalankan semua fungsi
+            updateCurrentYear();
+            toggleMobileMenu();
+            headerScrollEffect();
+            smoothScroll();
+            initGallery();
+            initScrollAnimation();
+            initContactButtons();
+            updatePersonalData();
+            initParallax();
+            initParticleEffect();
+            initShareButtons();
+            
+            // Tambah efek ketik pada greeting
+            const greeting = document.querySelector('.greeting');
+            const originalGreeting = greeting.textContent;
+            greeting.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalGreeting.length) {
+                    greeting.textContent += originalGreeting.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            };
+            
+            setTimeout(typeWriter, 500);
+        });
+        
+        // 14. Handle resize window
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+                mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+
+
+        // 16. Touch gestures untuk mobile (swipe untuk gallery)
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.querySelector('.profile-gallery').addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.querySelector('.profile-gallery').addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+
+            if (touchEndX < touchStartX - swipeThreshold) {
+                // Swipe kiri
+                switchGalleryImage('next');
+            }
+
+            if (touchEndX > touchStartX + swipeThreshold) {
+                // Swipe kanan
+                switchGalleryImage('prev');
+            }
+        }
+
+        function switchGalleryImage(direction) {
+            const activeImg = document.querySelector('.gallery-img.active');
+            let targetImg;
+
+            if (direction === 'next') {
+                targetImg = activeImg.nextElementSibling || galleryImages[0];
+
+            } else {
+                targetImg = activeImg.previousElementSibling || galleryImages[galleryImages.length - 1];
+            }
+
+            if (targetImg) {
+                targetImg.click();
+            }
+        }
+    </script>
+</body>
+</html> 
